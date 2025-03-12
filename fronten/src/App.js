@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import StackedAreaChart from "./components/stackedarea";
+import BarChart from "./components/BarChart";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         padding: "20px",
       }}
     >
-     <StackedAreaChart />
+      <StackedAreaChart />
+      <BarChart />
     </div>
   );
 }
