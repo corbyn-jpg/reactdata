@@ -1,66 +1,58 @@
-import React, {useEffect, useRef} from 'react';	
-import {Chart} from 'chart.js';
+import React, { useEffect, useRef } from 'react';
+import Chart from 'chart.js/auto';
 
 const LineChart = () => {
   const chartRef = useRef(null);
+  const chartInstanceRef = useRef(null);
 
   useEffect(() => {
-    const myChartRef = chartRef.current.getContext('2d');
+    if (chartInstanceRef.current) {
+      chartInstanceRef.current.destroy();
+    }
 
-    const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
-    const action = [100, 190, 540, 320, 150, 900, 200, 320, 500];
-    const horror = [50, 540, 500, 510, 190, 600, 200, 170, 999];
-    const scifi = [200, 300, 400, 500, 3400, 3500, 3600, 3700, 3800];
-    const romance = [2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800];
-
-    new Chart(myChartRef, {
+    const ctx = chartRef.current.getContext('2d');
+    chartInstanceRef.current = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: years,
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [
-            {
-                label: "Action",
-                data: action,
-                borderColor: "#000000",
-                backgroundColor: "rgba(184, 45, 45, 0.7)",
-                fill: true,
-              },
-              {
-                label: "Horror",
-                data: horror,
-                borderColor: "#000000",
-                backgroundColor: "rgba(25, 115, 57, 0.5)",
-                fill: true,
-              },
-              {
-                label: "Science Fiction",
-                data: scifi,
-                borderColor: "#000000",
-                backgroundColor: "rgb(75, 165, 192)",
-                fill: true,
-              },
-              {
-                label: "Romance",
-                data: romance,
-                borderColor: "#000000",
-                backgroundColor: "rgba(255, 181, 245, 0.78)",
-                fill: true,
-              }
-        ]
-      }
+          {
+            label: 'Dugenos',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            tension: 0.4, // Smooth curves
+          },
+          {
+            label: 'Gragons',
+            data: [28, 48, 40, 19, 86, 27, 90],
+            borderColor: 'rgba(153, 102, 255, 1)',
+            borderWidth: 2,
+            tension: 0.4,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
     });
+
+    return () => {
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+      }
+    };
   }, []);
 
   return (
-    <div
-      style={{
-        backgroundColor: "rgba(160, 167, 125, 0.8)",
-        height: "55vh",
-        marginTop: "5%",
-        position: "relative", 
-      }}
-    >
-      <canvas ref={chartRef} />
+    <div style={{ width: '100%', height: '400px' }}> {/* ✅ Ensure it has height */}
+      <canvas ref={chartRef}></canvas>
     </div>
   );
 };
