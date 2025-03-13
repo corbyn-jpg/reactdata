@@ -127,6 +127,7 @@ const StackedAreaChart = () => {
       style={{
         backgroundColor: "rgba(192, 253, 255, 0.8)",
         height: "55vh",
+        minWidth: "800px",
         marginTop: "5%",
         position: "relative", 
       }}

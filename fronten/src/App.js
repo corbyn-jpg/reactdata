@@ -1,7 +1,7 @@
 import React from "react";
 import StackedAreaChart from "./components/stackedarea";
 import BarChart from "./components/BarChart";
-import LineChart from "./components/LineChart";
+import LineChart from "./components/linechart";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
     >
       <StackedAreaChart />
       <BarChart />
-      <div style={{ width: "80%", maxWidth: "800px" }}> {/* ✅ Ensures proper size */}
+      <div style={{ width: "80%", minWidth: "800px" }}> {/* ✅ Ensures proper size */}
         <LineChart />
       </div>
     </div>

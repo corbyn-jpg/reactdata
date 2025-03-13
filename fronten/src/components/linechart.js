@@ -51,7 +51,15 @@ const LineChart = () => {
   }, []);
 
   return (
-    <div style={{ width: '100%', height: '400px' }}> {/* ✅ Ensure it has height */}
+    <div
+      style={{
+        backgroundColor: "rgba(192, 253, 255, 0.8)",
+        height: "55vh",
+        minWidth: "800px",
+        marginTop: "5%",
+        position: "relative",
+      }}
+    >
       <canvas ref={chartRef}></canvas>
     </div>
   );
