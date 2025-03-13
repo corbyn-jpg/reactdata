@@ -8,10 +8,10 @@ const BarChart = () => {
     const ctx = chartRef.current.getContext("2d");
 
     const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
-    const actionGames = [15000, 16000, 17000, 18000, 19000, 20000, 21000, 22000, 23000];
-    const adventureGames = [12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000];
-    const sportsGames = [10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000];
-    const puzzleGames = [8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000];
+    const osSales = [15000, 16000, 17000, 18000, 19000, 20000, 21000, 22000, 23000];
+    const productivitySales = [12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000];
+    const gameSales = [10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000];
+    const utilitySales = [8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000];
 
     const chart = new Chart(ctx, {
       type: "bar",
@@ -19,31 +19,31 @@ const BarChart = () => {
         labels: years,
         datasets: [
           {
-            label: "Action Games",
-            data: actionGames,
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
-            borderColor: "rgba(255, 99, 132, 1)",
-            borderWidth: 1,
-          },
-          {
-            label: "Adventure Games",
-            data: adventureGames,
-            backgroundColor: "rgba(54, 162, 235, 0.5)",
-            borderColor: "rgba(54, 162, 235, 1)",
-            borderWidth: 1,
-          },
-          {
-            label: "Sports Games",
-            data: sportsGames,
+            label: "Operating Systems",
+            data: osSales,
             backgroundColor: "rgba(75, 192, 192, 0.5)",
             borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1,
           },
           {
-            label: "Puzzle Games",
-            data: puzzleGames,
-            backgroundColor: "rgba(153, 102, 255, 0.5)",
-            borderColor: "rgba(153, 102, 255, 1)",
+            label: "Productivity Software",
+            data: productivitySales,
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Games",
+            data: gameSales,
+            backgroundColor: "rgba(54, 162, 235, 0.5)",
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Utilities",
+            data: utilitySales,
+            backgroundColor: "rgba(255, 205, 86, 0.5)",
+            borderColor: "rgba(255, 205, 86, 1)",
             borderWidth: 1,
           },
         ],
@@ -54,20 +54,20 @@ const BarChart = () => {
         plugins: {
           title: {
             display: true,
-            text: "Games Sold by Genre Over Time",
+            text: "Mario: Software Sales by Category Over Time",
             font: {
               size: 24,
-              family: "serif",
+              family: "sans-serif",
             },
-            color: "black",
+            color: "#ffffff",
           },
           legend: {
             labels: {
               font: {
                 size: 16,
-                family: "serif",
+                family: "sans-serif",
               },
-              color: "black",
+              color: "#ffffff",
             },
           },
         },
@@ -78,15 +78,15 @@ const BarChart = () => {
               text: "Year",
               font: {
                 size: 20,
-                family: "serif",
+                family: "sans-serif",
               },
-              color: "black",
+              color: "#ffffff",
             },
             ticks: {
-              color: "black",
+              color: "#ffffff",
               font: {
                 size: 16,
-                family: "serif",
+                family: "sans-serif",
               },
             },
             grid: {
@@ -96,18 +96,18 @@ const BarChart = () => {
           y: {
             title: {
               display: true,
-              text: "Number of Games Sold",
+              text: "Number of Licenses Sold",
               font: {
                 size: 20,
-                family: "serif",
+                family: "sans-serif",
               },
-              color: "black",
+              color: "#ffffff",
             },
             ticks: {
-              color: "black",
+              color: "#ffffff",
               font: {
                 size: 16,
-                family: "serif",
+                family: "sans-serif",
               },
             },
             grid: {
@@ -118,17 +118,19 @@ const BarChart = () => {
       },
     });
 
-    return () => chart.destroy(); // Cleanup on unmount
+    return () => chart.destroy();
   }, []);
 
   return (
     <div
       style={{
-        backgroundColor: "rgba(192, 253, 255, 0.8)",
+        backgroundColor: "rgba(30, 30, 47, 0.8)",
         height: "55vh",
         minWidth: "800px",
         marginTop: "5%",
         position: "relative",
+        borderRadius: "10px",
+        padding: "20px",
       }}
     >
       <canvas ref={chartRef} />
